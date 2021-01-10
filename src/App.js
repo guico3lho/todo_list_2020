@@ -17,9 +17,20 @@ function App() {
     event.preventDefault();
     setTasks([...tasks, {
       id: tasks.length,
-      value: task
+      value: task,
+      done: false
     }])
 
+  }
+
+  const handleBoxClick = (event) => {
+    if(event.target.checked){
+      // setTasks(tasks.filter(tarefa => tarefa.id != task.id));
+      //TODO: Usar o atributo "done do setTasks"
+      console.log("checado")
+    }else {
+      console.log("nao checado");
+    }
   }
 
   return (
@@ -27,18 +38,24 @@ function App() {
       <form onSubmit={handleSubmit}>
 
         <input type="text" onChange={handleChange}>
-          {/* TODO: write the task */}
 
         </input>
         <button type="submit">
-          {/* TODO: when pressed, add task to the task list */}
-        Adicionar
+          Adicionar
       </button>
       </form>
       <ul>
-        {/* TODO: Map para renderizar as tasks */}
+       {/* TODO: Remove task quando concluido */}
         {tasks.map(task => (
-          < li key={ task.id}> {task.id} - {task.value}</li>
+          <div key={task.id}style={{ display: "flex" }}>
+
+            < li> {task.id} - {task.value}</li>
+            <div>
+              <input type="checkbox" id="done" name="done" onClick={handleBoxClick}
+              />
+              <label >done</label>
+            </div>
+          </div>
         ))}
 
       </ul>
