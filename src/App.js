@@ -1,53 +1,22 @@
 
 import { useState } from "react";
 import Styles from "./styles.css"
+import { Input } from "./components/Input"
+import { List } from "./components/List"
 function App() {
-  const [task, setTask] = useState();
+
   const [tasks, setTasks] = useState([]);
 
-  const handleChange = (event) => {
-    setTask(event.target.value);
-
-    // FIXME: Pq são diferentes seus resultados?
-    // console.log(task);
-    // console.log(event.target.value);
+  const addTodo = text => {
+    //Lida com a criação do componente Task (id, text, done, ..., etc)
+    const newTodo = {id: tasks.length, text: text, done: false}
+    setTasks([...tasks, newTodo]);
   }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setTasks([...tasks, {
-      id: tasks.length,
-      value: task,
-      done: false
-    }])
-
-  }
-
-
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-
-        <input type="text" onChange={handleChange}>
-
-        </input>
-        <button type="submit">
-          Adicionar
-      </button>
-      </form>
-
-
-      <ul>
-        {/* TODO: Remove task quando concluido */}
-        {tasks.map(task => (
-          <div key={task.id} style={{ display: "flex" }}>
-
-            < li>{task.value}</li>
-          </div>
-        ))}
-
-      </ul>
+      <Input addTodo={addTodo} />
+      <List tasks={tasks} />
     </div >
   );
 }
