@@ -1,5 +1,12 @@
 button {
   margin-left: 10px;
-  height: 5vh;
+  height: 5vh;  
   width: 10vw;
+}
+
+
+.removeButton {
+  /* height: 1vh; */
+  background-color: red;
+  /* padding-bottom: 3vh; */
 }

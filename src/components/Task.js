@@ -1,9 +1,14 @@
-export const Task = ({task}) => {
+import "../styles.css"
+export const Task = ({ task, removeTodo, index }) => {
+    const handleRemove = () => {
+        removeTodo(index);
+    }
+
     return (
         <li key={task.id} >
 
             < span>{task.text}</span>
-            <button key={task.id} style={{ height: "2vh", verticalAlign: "middle", alignSelf: "center", paddingBottom: "3vh" }}>Remover</button>
+            <button className="removeButton" onClick={handleRemove} >Remover</button>
         </li>
     )
 }

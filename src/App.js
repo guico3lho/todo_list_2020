@@ -12,10 +12,12 @@ function App() {
     setTasks([...tasks, newTodo]);
   }
 
-  const removeTodo = (event) => {
-    console.log(event);
+  const removeTodo = (index) => {
+    
+    const beforeArray = tasks.slice(0, index);
+    const afterArray = tasks.slice(index + 1);
 
-
+    setTasks([...beforeArray, ...afterArray]);
   }
 
   return (
