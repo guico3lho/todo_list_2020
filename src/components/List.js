@@ -1,17 +1,20 @@
 
-export const List = ({ tasks }) => {
-    return (
+import {Task} from "./Task"
+export const List = ({ tasks ,removeTodo}) => {
 
+    const handleRemove = (event ) => {
+        // console.log(event.target.getAttribute("reactFiber$5qdat6zojqv"))
+        
+    }
+    return (
         <ul>
             {/* TODO: Remove task quando concluido */}
             {
-                console.log(tasks),
+                
                 tasks.map(task => (
                     //Função map funciona apenas com Arrays!
-                    <div key={task.id} style={{ display: "flex" }}>
-
-                        < li>{task.text}</li>
-                    </div>
+                    <Task task={task}/>
+                    
                 ))}
 
         </ul>

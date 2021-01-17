@@ -10,8 +10,9 @@ export const Input = ({ addTodo }) => {
         event.preventDefault();
 
         addTodo(text);
-
+        
         setText("");
+        
 
     }
 

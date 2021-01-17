@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import Styles from "./styles.css"
 import { Input } from "./components/Input"
 import { List } from "./components/List"
 function App() {
@@ -13,10 +12,16 @@ function App() {
     setTasks([...tasks, newTodo]);
   }
 
+  const removeTodo = (event) => {
+    console.log(event);
+
+
+  }
+
   return (
     <div>
       <Input addTodo={addTodo} />
-      <List tasks={tasks} />
+      <List tasks={tasks} removeTodo={removeTodo}/>
     </div >
   );
 }
