@@ -12,6 +12,17 @@ function App() {
     setTasks([...tasks, newTodo]);
   }
 
+  const checkTodo = event => {
+    
+    if(event.target.checked){
+      return true;
+      
+    }else {
+      return false;
+    }
+    // const newTodo = {...newTodo, done: event.target.checked}
+  }
+
   const removeTodo = (index) => {
     
     const beforeArray = tasks.slice(0, index);
@@ -23,7 +34,7 @@ function App() {
   return (
     <div>
       <Input addTodo={addTodo} />
-      <List tasks={tasks} removeTodo={removeTodo}/>
+      <List tasks={tasks} removeTodo={removeTodo} checkTodo={checkTodo}/>
     </div >
   );
 }
