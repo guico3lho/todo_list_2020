@@ -1,26 +1,59 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "./components/Input"
 import { List } from "./components/List"
+import { itsDone } from "./components/functions"
 function App() {
-
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+
+    const handleDelete = (event) => {
+      if (event.key === "!") {
+        console.log('Oi lindao')
+        setTasks(tasks.filter(itsDone))
+        // setTasks(tasks);
+      }
+      // setTasks(tasks.filter(itsDone));
+
+    }
+    document.addEventListener("keydown", handleDelete);
+
+    return () => {
+      document.removeEventListener("keydown", handleDelete);
+    }
+
+  }, [tasks]);
+
+
+
+
+
 
   const addTodo = text => {
     //Lida com a criação do componente Task (id, text, done, ..., etc)
     const newTodo = { id: tasks.length, text: text, done: false }
     setTasks([...tasks, newTodo]);
+    console.log(tasks);
+
   }
 
-  const checkTodo = event => {
+
+  const oldCheckTodo = (event, index) => {
 
     if (event.target.checked) {
-      return true;
+      setTasks([...tasks, tasks[index].done = !tasks[index].done])
 
     } else {
       return false;
     }
     // const newTodo = {...newTodo, done: event.target.checked}
+  }
+
+  const checkTodo = (index) => {
+    const newTodos = tasks.slice();
+    newTodos[index].done = !newTodos[index].done
+    setTasks(newTodos);
   }
 
   const removeTodo = (index) => {
