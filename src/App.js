@@ -56,6 +56,8 @@ function App() {
 
   return (
     <div>
+      <h3>Bem-vindo ao todo-list do GuiK 😎</h3>
+      <p>Pressione as teclas (Shift + !) para remover tarefas completadas</p>
       <Input addTodo={addTodo} />
       <List tasks={tasks}
         removeTodo={removeTodo}
