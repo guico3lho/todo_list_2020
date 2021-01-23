@@ -39,16 +39,6 @@ function App() {
   }
 
 
-  const oldCheckTodo = (event, index) => {
-
-    if (event.target.checked) {
-      setTasks([...tasks, tasks[index].done = !tasks[index].done])
-
-    } else {
-      return false;
-    }
-    // const newTodo = {...newTodo, done: event.target.checked}
-  }
 
   const checkTodo = (index) => {
     const newTodos = tasks.slice();
